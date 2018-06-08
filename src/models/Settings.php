@@ -39,7 +39,7 @@ class Settings extends Model
      *
      * @var string
      */
-    public $someAttribute = 'Some Default';
+    public $optInInputName = 'mailing-list';
 
     // Public Methods
     // =========================================================================
