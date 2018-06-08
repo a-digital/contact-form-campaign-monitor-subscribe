@@ -1,0 +1,40 @@
+{
+    "name": "adigital/contact-form-campaign-monitor-subscribe",
+    "description": "Utilises the Campaign Monitor Service plugin to subscribe users to a mailing list based on a checkbox input in a Craft contact form.",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "contact form campaign monitor subscribe"
+    ],
+    "support": {
+        "docs": "https://github.com/contact-form-campaign-monitor-subscribe/contact-form-campaign-monitor-subscribe/blob/master/README.md",
+        "issues": "https://github.com/contact-form-campaign-monitor-subscribe/contact-form-campaign-monitor-subscribe/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mark @ A Digital",
+            "homepage": "https://adigital.agency/"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0-RC1"
+    },
+    "autoload": {
+        "psr-4": {
+          "adigital\\contactformcampaignmonitorsubscribe\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Contact Form Campaign Monitor Subscribe",
+        "handle": "contact-form-campaign-monitor-subscribe",
+        "hasCpSettings": true,
+        "hasCpSection": false,
+        "changelogUrl": "https://raw.githubusercontent.com/contact-form-campaign-monitor-subscribe/contact-form-campaign-monitor-subscribe/master/CHANGELOG.md",
+        "class": "adigital\\contactformcampaignmonitorsubscribe\\ContactFormCampaignMonitorSubscribe"
+    }
+}
