@@ -17,8 +17,16 @@
 
 {{ forms.textField({
     label: 'Opt in input name',
-    instructions: 'Set the input name to check for whether the user has subscribed in this field.',
+    instructions: 'Set the input name to check whether the user has subscribed in this field.',
     id: 'optInInputName',
     name: 'optInInputName',
     value: settings['optInInputName']})
+}}
+
+{{ forms.textField({
+    label: 'Opt in input value',
+    instructions: 'Set the input value to check whether the user has subscribed in this field.',
+    id: 'optInInputValue',
+    name: 'optInInputValue',
+    value: settings['optInInputValue']})
 }}

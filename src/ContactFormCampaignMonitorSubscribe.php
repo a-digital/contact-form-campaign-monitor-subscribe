@@ -12,6 +12,8 @@ namespace adigital\contactformcampaignmonitorsubscribe;
 
 use adigital\contactformcampaignmonitorsubscribe\models\Settings;
 
+use clearbold\cmlists\CmLists;
+
 use Craft;
 use craft\base\Plugin;
 use craft\services\Plugins;
@@ -81,15 +83,21 @@ class ContactFormCampaignMonitorSubscribe extends Plugin
         self::$plugin = $this;
 
         Event::on(Mailer::class, Mailer::EVENT_BEFORE_SEND, function(SendEvent $e) {
+	      $settings = $this->getSettings();
           $request = Craft::$app->getRequest();
-          echo "<pre>";
-            var_dump($request);
-          echo "</pre>";
-          die();
-          
-          if (!$isSpam) {
-            $e->isSpam = true;
-          }
+          if (!empty($request->getParam($settings['optInInputName'])) && $request->getParam($settings['optInInputName']) == $settings['optInInputValue']) {
+	        $listId = $request->getRequiredBodyParam('listId') ? Craft::$app->security->validateData($request->post('listId')) : null;
+	        $email = $request->getParam('fromEmail');
+	        $fullName = $request->getParam('fromName');
+	        
+	        $subscriber = array(
+              'EmailAddress' => $email,
+              'Name' => $fullName,
+              'Resubscribe' => true
+            );
+            
+            $response = CmLists::getInstance()->campaignmonitor->addSubscriber($listId, $subscriber);
+	      }
         });
 
 /**

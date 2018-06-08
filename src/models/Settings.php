@@ -40,6 +40,7 @@ class Settings extends Model
      * @var string
      */
     public $optInInputName = 'mailing-list';
+    public $optInInputValue = 'Yes';
 
     // Public Methods
     // =========================================================================
@@ -57,7 +58,12 @@ class Settings extends Model
     public function rules()
     {
         return [
-            ['optInInputName', 'string', 'value' => 'mailing-list'],
+	        // these attributes are required
+	        [['optInInputName', 'optInInputValue'], 'required', 'message' => 'Please complete all required fields'],
+	        ['optInInputName', 'default', 'value' => 'mailing-list'],
+            ['optInInputValue', 'default', 'value' => 'Yes'],
+            ['optInInputValue', 'string'],
+            ['optInInputValue', 'string'],
         ];
     }
 }
